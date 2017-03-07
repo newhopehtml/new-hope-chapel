@@ -1,56 +1,30 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
+const gulp = require('gulp');
+const server = require('gulp-server-livereload');
+const paths = require('../paths');
 
-// this task utilizes the browsersync plugin
-// to create a dev server instance
-// at http://localhost:9000
-gulp.task('serve', ['build'], function(done) {
-  browserSync({
-    online: false,
-    open: false,
-    port: 9000,
-    server: {
-      baseDir: ['.'],
-      middleware: function(req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-      }
-    }
-  }, done);
+gulp.task('serve', () => {
+  const serveDir = './'
+  const port = '8000'
+  console.log('starting server at: ' + serveDir);
+  return gulp.src(serveDir)
+    .pipe(server({
+      livereload: true,
+      open: true,
+      port: port
+    }));
 });
 
-// this task utilizes the browsersync plugin
-// to create a dev server instance
-// at http://localhost:9000
-gulp.task('serve-bundle', ['bundle'], function(done) {
-  browserSync({
-    online: false,
-    open: false,
-    port: 9000,
-    server: {
-      baseDir: ['.'],
-      middleware: function(req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-      }
-    }
-  }, done);
+gulp.task('serve-export', () => {
+  const serveDir = paths.exportSrv;
+  const port = '8000'
+  console.log('starting server at: ' + serveDir);
+  return gulp.src(serveDir)
+    .pipe(server({
+      livereload: true,
+      open: true,
+      port: port
+    }));
 });
 
-// this task utilizes the browsersync plugin
-// to create a dev server instance
-// at http://localhost:9000
-gulp.task('serve-export', ['export'], function(done) {
-  browserSync({
-    online: false,
-    open: false,
-    port: 9000,
-    server: {
-      baseDir: ['./export'],
-      middleware: function(req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-      }
-    }
-  }, done);
-});
+
+

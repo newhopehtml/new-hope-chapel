@@ -8,7 +8,6 @@ var paths = require('../paths');
 var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
 var notify = require('gulp-notify');
-var browserSync = require('browser-sync');
 var htmlmin = require('gulp-htmlmin');
 
 // transpiles changed es6 files to SystemJS format
@@ -38,8 +37,7 @@ gulp.task('build-html', function() {
 gulp.task('build-css', function() {
   return gulp.src(paths.css)
     .pipe(changed(paths.output, {extension: '.css'}))
-    .pipe(gulp.dest(paths.output))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(paths.output));
 });
 
 // this task calls the clean task (located

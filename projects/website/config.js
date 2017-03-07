@@ -20,10 +20,7 @@ System.config({
     "aurelia-templating-binding": "npm:aurelia-templating-binding@1.0.0",
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.1.1",
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0",
-    "bluebird": "npm:bluebird@3.4.1",
-    "bootstrap": "github:twbs/bootstrap@3.3.7",
     "fetch": "github:github/fetch@1.0.0",
-    "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
     "text": "github:systemjs/plugin-text@0.0.8",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -199,11 +196,20 @@ System.config({
       "indexof": "npm:indexof@0.0.1"
     }
   },
+  depCache: {
+    "blur-image.js": [
+      "aurelia-framework"
+    ],
+    "users.js": [
+      "aurelia-framework",
+      "aurelia-fetch-client",
+      "fetch"
+    ]
+  },
   bundles: {
     "app-build.js": [
       "app.html!github:systemjs/plugin-text@0.0.8.js",
       "app.js",
-      "app.spec.js",
       "blur-image.js",
       "child-router.html!github:systemjs/plugin-text@0.0.8.js",
       "child-router.js",
@@ -217,11 +223,6 @@ System.config({
     "aurelia.js": [
       "github:github/fetch@1.0.0.js",
       "github:github/fetch@1.0.0/fetch.js",
-      "github:twbs/bootstrap@3.3.7.js",
-      "github:twbs/bootstrap@3.3.7/css/bootstrap.css!github:systemjs/plugin-text@0.0.8.js",
-      "github:twbs/bootstrap@3.3.7/js/bootstrap.js",
-      "npm:aurelia-animator-css@1.0.1.js",
-      "npm:aurelia-animator-css@1.0.1/aurelia-animator-css.js",
       "npm:aurelia-binding@1.0.9.js",
       "npm:aurelia-binding@1.0.9/aurelia-binding.js",
       "npm:aurelia-bootstrapper@1.0.0.js",
@@ -305,22 +306,6 @@ System.config({
       "npm:aurelia-templating@1.1.1/aurelia-templating.js",
       "npm:jquery@2.2.4.js",
       "npm:jquery@2.2.4/dist/jquery.js"
-    ]
-  },
-  depCache: {
-    "app.spec.js": [
-      "src/app.js"
-    ],
-    "blur-image.js": [
-      "aurelia-framework"
-    ],
-    "main.js": [
-      "bootstrap"
-    ],
-    "users.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "fetch"
     ]
   }
 });
